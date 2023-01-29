@@ -1,0 +1,91 @@
+<!-- <form [formGroup]="loginform" (ngSubmit)="checkbox()">
+   <div class="container">
+    <div class="form-column">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" formControlName="email" id="email" placeholder="email" class="form-control" style="width: 300px;" [ngClass]="{ 'is-invalid': loginform.get('email')?.errors}"/>
+            <div *ngIf="loginform.get('email')?.errors" class="invalid-feedback">
+                <div *ngIf="loginform.get('email')?.errors?.['required']">Email is required<sup>*</sup></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-column">
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="password" formControlName="password" placeholder="Password"  class="form-control" style="width: 300px;" [ngClass]="{ 'is-invalid':loginform.get('password')?.errors }" />
+            <div *ngIf="loginform.get('password')?.errors" class="invalid-feedback">
+                <div *ngIf="loginform.get('password')?.errors?.['required']">Password is required<sup>*</sup></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" id="examplecheck2" for="exampleCheck1">Remember me</label>
+      </div>
+
+    <div class="text-center">
+        <button class="btn btn-primary" type="submit" (click)="checkbox()" >Submit</button>
+    </div>
+
+   </div>
+</form> -->
+
+<div class="container">
+    <div class="main">  	
+        <input type="checkbox" id="chk" aria-hidden="true">
+    
+            <div class="signup">
+                <form [formGroup]="signupform"> 
+                    <label for="chk" aria-hidden="true">Sign up</label>
+
+                    <!-- username -->
+                    <div>
+                        <input type="text" name="txt" placeholder="User name" formControlName="userName" [ngClass]="{'is-invalid': signupform.get('userName')?.errors}"  [(ngModel)]="signupObj.userName">
+                        <!-- <span class="text-danger" *ngIf="signupform.controls['userName'].dirty && signupform.hasError('required', 'userName')">*username is required</span> -->
+                        <div class="invalid-feedback" *ngIf="signupform.get('userName')?.invalid">username is required<sup>*</sup></div>
+                    </div>
+                     <!-- email   -->
+                    <div>
+                        <input type="email" name="email" placeholder="Email" formControlName="email" [ngClass]="{'is-invalid': signupform.get('email')?.errors}"  [(ngModel)]="signupObj.email">
+                        <div class="invalid-feedback" *ngIf="signupform.get('email')?.errors?.['required']">Email is required<sup>*</sup></div>
+                        <div class="invalid-feedback" *ngIf="signupform.get('email')?.errors?.['email']">Email is invalid><sup>*</sup></div>
+                    </div>
+                    <!-- password -->
+                    <div>
+                        <input type="password" name="pswd" placeholder="Password" formControlName="password" [ngClass]="{'is-invalid':signupform.get('password')?.errors}" [(ngModel)]="signupObj.password">
+                        <div class="invalid-feedback" *ngIf="signupform.get('password')?.errors" ></div>
+                        <div class="invalid-feedback" *ngIf="signupform.get('password')?.errors?.['required']" >Password is required<sup>*</sup></div>
+                        <div class="invalid-feedback" *ngIf="signupform.get('password')?.errors?.['pattern']">Please use special characters</div>
+
+                    </div>
+                    <button type="submit" [disabled]="signupform.invalid"  (click)="onSignup()">Sign up</button>
+                    <!-- [disabled]="signupform.controls['userName' || 'email' || 'password'].invalid" -->
+                    
+                </form>
+            </div>
+    
+            <div class="login">
+                <form #loginform="ngForm" >
+                    <label for="chk" aria-hidden="true">Login</label>
+                    <div>
+                        <input type="email" required name="userName" #username="ngModel" placeholder="User Name" [(ngModel)]="loginObj.userName" ngModel >
+                        <span class="usernme" *ngIf="username.invalid && username.touched" style="color: red;">Enter an Username</span>
+                        <!-- <div *ngIf="!userName?.valid && (userName?.dirty || userName?.touched)" class="error"></div>
+                        <div *ngIf="userName.error.required">Username is required</div> -->
+
+                    </div>
+                    <input type="password"  required name="pswd" #password="ngModel" placeholder="Password" [(ngModel)]="loginObj.password" ngModel >
+                    <span class="pswd" *ngIf="password.invalid && password.touched" style="color: red;">Enter a Password</span> 
+
+                    <div class="form-group form-check" id="reme">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" id="examplecheck2" for="exampleCheck1" [(ngModel)]="rememberMe">Remember me</label>
+                    </div>
+
+                    <button id="btn" [disabled]="loginform.invalid" (click)="onLogin()">Login</button>
+                </form>
+            </div>
+    </div>
+</div>

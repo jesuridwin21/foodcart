@@ -1,16 +1,34 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { HomescreenComponent } from './homescreen/homescreen.component';
+import { HeaderComponent } from './header/header.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AddrecipeComponent } from './addrecipe/addrecipe.component';
+import { CardlistComponent } from './cardlist/cardlist.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    HomescreenComponent,
+    HeaderComponent,
+    ProfileComponent,
+    AddrecipeComponent,
+    CardlistComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    // AngularFontAwesomeModule,
+    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

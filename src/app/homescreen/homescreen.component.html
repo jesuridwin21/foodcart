@@ -1,0 +1,58 @@
+<!-- <app-header></app-header> -->
+
+<div class="row search-container">
+  <div class="col-lg-11 search-input-wrap">
+    <input type="search" class="srch" placeholder="Search">
+  </div>
+  <div class="col-lg-1">
+    <button (click)="onFilter()">
+      <i class="bi bi-funnel-fill"></i>
+    </button>
+  </div>
+</div>
+
+
+
+
+
+<!-- cart lists -->
+
+<div class="row">
+  <div class="card col-lg-3" *ngFor="let receipe of allReceipes">
+    <div class="card-img">
+    </div>
+    <div class="card-info">
+      <p class="text-title">Product title: {{receipe.recipename}} </p>
+      <span class="text-title">Price: {{receipe.price}} </span>
+    </div>
+    <div class="card-footer">
+
+      <button class="btn btn-primary" (click)="goTocart()">cart</button>
+      <span>
+        <button class="btn btn-secondary">
+          <i class="bi bi-heart-fill"></i>
+        </button>
+      </span>
+    </div>
+  </div>
+</div>
+
+
+<!-- filter popup -->
+
+<!-- <div class="fltrmodal" id="filtermodal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Filter</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Modal body text goes here.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Apply</button>
+        </div>
+      </div>
+    </div>
+  </div> -->

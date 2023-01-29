@@ -8,8 +8,8 @@ header {
 }
 
 .menu ul {
-    padding: 0;
-    margin: 0;
+   padding: 0;
+   margin: 0;
 }
 
 .menu ul li {
@@ -20,14 +20,14 @@ header {
     margin-left: 44px;
 }
 
-.menu ul li:hover {
+.menu ul li:hover{
     color: red;
     cursor: pointer;
     transition: 0.4 ease-in-out;
 }
 
 @media only screen and (max-width: 999px) {
-    .menu {
+    .menu{
         position: absolute;
         right: 0;
         top: 64px;
@@ -36,11 +36,11 @@ header {
 
 /* sidebar */
 
-/* .app-component{
+.app-component{
     width: 98%;
-} */
+}
 
-.mr-2 {
+.mr-2{
     margin-left: 25px;
 }
 
@@ -50,12 +50,12 @@ header {
     /* width: 65px; */
 }
 
-.sidebar-box:hover {
+.sidebar-box:hover{
     width: 215px;
     transition: 0.3s;
 }
 
-.sidebar-items {
+.sidebar-items{
     list-style: none;
     line-height: 60px;
     padding-left: 0px;
@@ -70,12 +70,12 @@ header {
 
 }
 
-.sidebar-items li:hover {
+.sidebar-items li:hover{
     background-color: lightskyblue;
     color: #fcfcfc;
 }
 
-.onActive:hover {
+.onActive:hover{
     color: #fcfcfc;
     background-color: lightskyblue;
 }
@@ -84,7 +84,7 @@ header {
 
 .favmodal-title {
     margin-left: 150px;
-
+    
 }
 
 /* propic */
@@ -99,7 +99,7 @@ header {
     margin-top: -50px;
 }
 
-.imgtxt {
+.imgtxt  {
     margin-top: 10px;
 }
 

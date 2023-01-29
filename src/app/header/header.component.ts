@@ -1,22 +1,44 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css']
 })
-export class AppComponent {
-  title = 'foodcart';
-  // loggedIn!: true;
+export class HeaderComponent implements OnInit {
 
-  constructor ( private router: Router) {}
+  data: any;
+  loggedIn = true;
 
+  constructor(private router: Router, private route: ActivatedRoute) { }
+
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      if (params['data']) {
+        this.data = JSON.parse(params['data']);
+      }
+    })
+  }
+
+  onLogout() {
+    // localStorage.removeItem('loginObj');
+    // localStorage.clear();
+    this.loggedIn = false;
+    this.router.navigate(['./login']);
+
+  }
+
+
+
+  // goto(Home: any) {
+
+  // }
 
   tofav() {
     this.router.navigate(['./cardlist']);
   }
-
 
   // favourite popup
 
@@ -45,14 +67,6 @@ export class AppComponent {
 
   }
 
-  onLogout() {
-    // localStorage.removeItem('loginObj');
-    // localStorage.clear();
-    // this.loggedIn = false;
-    this.router.navigate(['./login']);
-
-  }
-
   toprof() {
     this.router.navigate(['./profile']);
   }
@@ -74,6 +88,3 @@ export class AppComponent {
     this.router.navigate(['./addrecipe']);
   }
 }
-
-
-

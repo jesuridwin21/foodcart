@@ -1,0 +1,24 @@
+<!-- <app-header></app-header> -->
+<div id="container">
+    <form [formGroup]="addrecipe" (ngSubmit)="onSubmit()">
+        <div class="image-selection">
+            <img width="100px" height="100px" [src]="url" id="defaultimg">
+        </div>
+        <div>
+            <label for="recipename"> Recipe Name:</label>
+            <input type="text" id="recipename" formControlName="recipename" name="Add recipe" placeholder="Add Recipe">
+        </div>
+        <div>
+            <label for="price" id="price">Price:</label>
+            <input type="number" id="Price" formControlName="price" name="Price" placeholder="Price">
+        </div>
+        <div>
+            <input type="file" hidden="true">
+        </div>
+
+        <div id="lower">
+            <button class="btn btn-secondary" (click)="onReset()">cancel</button>
+            <button class="btn btn-primary" type="submit">save</button>
+        </div>
+    </form>
+</div>
