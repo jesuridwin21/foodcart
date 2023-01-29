@@ -106,3 +106,11 @@ header {
 .imgtxt p {
     font-weight: 600;
 }
+
+.favorite-icon {
+    position: relative;
+}
+
+.badge {
+    font-size: 10px;
+}

@@ -18,12 +18,15 @@ export class HomescreenComponent implements OnInit {
   data: any;
   allReceipes: any[] = [];
   cardSearch = '';
+  
   @ViewChild('toast', { static: true }) toast: any;
   constructor(private route: ActivatedRoute, private router: Router, private recipeService: RecipeService, private cartservice: Cartservice) { }
 
   ngOnInit(): void {
     let id = this.route.snapshot.paramMap.get('id');
     this.allReceipes = this.recipeService.getAllReceipes()
+
+    
   }
 
   goTocart(receipe: any) {
@@ -31,19 +34,21 @@ export class HomescreenComponent implements OnInit {
     // const toast = new bootstrap.Toast(this.toast.nativeElement)
     // toast.show()
   }
-
-
   onFilter() {
     // const notNull = document.getElementById('filtermodal');
     // if (notNull != null) {
     //   notNull.style.display = 'block';
     // }
-
   }
 
   deleteCard(receipe: any) {
     this.recipeService.deleteReceipe(receipe)
     this.allReceipes = this.recipeService.getAllReceipes()
+  }
+
+  addToFavorite(receipe: any) {
+    this.recipeService.addToFavorite(receipe);
+    this.allReceipes = this.recipeService.getAllReceipes();
   }
 
 }

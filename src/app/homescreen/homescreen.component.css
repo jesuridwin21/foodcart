@@ -43,6 +43,10 @@
     width: 100%;
 }
 
+.favorite-receipe {
+    color: red;
+}
+
 /*Hover*/
 /* .card-img:hover { */
 /* transform: translateY(-25%); */

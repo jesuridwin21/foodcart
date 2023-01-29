@@ -1,4 +1,5 @@
-export interface Receipe{
+export interface Receipe {
     recipename: string;
-     price: number;
+    price: number;
+    favoriteReceipe: boolean;
 }

@@ -31,7 +31,8 @@
     <div class="card-footer">
       <button class="btn btn-primary" (click)="goTocart(receipe)">cart</button>
       <span>
-        <button class="btn btn-secondary">
+        <button class="btn btn-secondary" [ngClass]="{'favorite-receipe':receipe.favoriteReceipe}"
+          (click)="addToFavorite(receipe)">
           <i class="bi bi-heart-fill"></i>
         </button>
       </span>
