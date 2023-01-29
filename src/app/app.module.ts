@@ -13,6 +13,7 @@ import { CardlistComponent } from './cardlist/cardlist.component';
 import { CardSearchPipe } from './pipes/card-search.pipe';
 import { TotalAmountPipe } from './pipes/total-amount.pipe';
 import { ShellComponent } from './shell/shell.component';
+import { SortReceipePipe } from './pipes/sort-receipe.pipe';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ShellComponent } from './shell/shell.component';
     CardSearchPipe,
     TotalAmountPipe,
     ShellComponent,
+    SortReceipePipe,
   ],
   imports: [
     BrowserModule,

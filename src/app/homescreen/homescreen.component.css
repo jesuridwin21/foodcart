@@ -47,6 +47,10 @@
     color: red;
 }
 
+.price-switch {
+    text-align: left;
+}
+
 /*Hover*/
 /* .card-img:hover { */
 /* transform: translateY(-25%); */

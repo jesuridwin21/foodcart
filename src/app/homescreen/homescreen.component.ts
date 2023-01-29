@@ -18,7 +18,8 @@ export class HomescreenComponent implements OnInit {
   data: any;
   allReceipes: any[] = [];
   cardSearch = '';
-  
+  priceOrder = 'lowToHigh'
+
   @ViewChild('toast', { static: true }) toast: any;
   constructor(private route: ActivatedRoute, private router: Router, private recipeService: RecipeService, private cartservice: Cartservice) { }
 
@@ -26,7 +27,7 @@ export class HomescreenComponent implements OnInit {
     let id = this.route.snapshot.paramMap.get('id');
     this.allReceipes = this.recipeService.getAllReceipes()
 
-    
+
   }
 
   goTocart(receipe: any) {
@@ -35,10 +36,10 @@ export class HomescreenComponent implements OnInit {
     // toast.show()
   }
   onFilter() {
-    // const notNull = document.getElementById('filtermodal');
-    // if (notNull != null) {
-    //   notNull.style.display = 'block';
-    // }
+    const notNull = document.getElementById('filtermodal');
+    if (notNull != null) {
+      notNull.style.display = 'block';
+    }
   }
 
   deleteCard(receipe: any) {
@@ -50,5 +51,17 @@ export class HomescreenComponent implements OnInit {
     this.recipeService.addToFavorite(receipe);
     this.allReceipes = this.recipeService.getAllReceipes();
   }
+  switchHighToLow(event: any) {
+    this.priceOrder = 'highToLow'
+  }
 
+  switchLowToHigh(event: any) {
+    this.priceOrder = 'lowToHigh'
+  }
+
+  sortReceipes() {
+    if (this.priceOrder === 'highToLow') {
+
+    }
+  }
 }
