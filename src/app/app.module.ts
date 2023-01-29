@@ -11,6 +11,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { AddrecipeComponent } from './addrecipe/addrecipe.component';
 import { CardlistComponent } from './cardlist/cardlist.component';
 import { CardSearchPipe } from './pipes/card-search.pipe';
+import { TotalAmountPipe } from './pipes/total-amount.pipe';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { CardSearchPipe } from './pipes/card-search.pipe';
     AddrecipeComponent,
     CardlistComponent,
     CardSearchPipe,
+    TotalAmountPipe,
   ],
   imports: [
     BrowserModule,

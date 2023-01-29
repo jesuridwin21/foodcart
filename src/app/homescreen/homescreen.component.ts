@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+declare const bootstrap: any;
+
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { homescreen } from '../addrecipe/modal/home.modal';
+import { Cartservice } from '../services/cart.service';
 import { RecipeService } from '../services/recipe.service';
 import { Product } from '../types/products';
 // import { cartservice } from '../services/cart.service';
@@ -15,19 +18,21 @@ export class HomescreenComponent implements OnInit {
   data: any;
   allReceipes: any[] = [];
   cardSearch = '';
-
-  constructor(private route: ActivatedRoute, private router: Router, private recipeService: RecipeService) { }
+  @ViewChild('toast', { static: true }) toast: any;
+  constructor(private route: ActivatedRoute, private router: Router, private recipeService: RecipeService, private cartservice: Cartservice) { }
 
   ngOnInit(): void {
     let id = this.route.snapshot.paramMap.get('id');
     this.allReceipes = this.recipeService.getAllReceipes()
   }
 
-  goTocart() {
-    this.router.navigate(['./cardlist']);
-    // this.cartService.add(product);
-
+  goTocart(receipe: any) {
+    this.cartservice.addItemToCart(receipe);
+    // const toast = new bootstrap.Toast(this.toast.nativeElement)
+    // toast.show()
   }
+
+
   onFilter() {
     // const notNull = document.getElementById('filtermodal');
     // if (notNull != null) {
