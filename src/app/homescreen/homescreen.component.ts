@@ -26,17 +26,17 @@ export class HomescreenComponent implements OnInit {
     // this.cartService.add(product);
 
   }
-
-  // filter popup
-
-
-
   onFilter() {
     // const notNull = document.getElementById('filtermodal');
     // if (notNull != null) {
     //   notNull.style.display = 'block';
     // }
 
+  }
+
+  deleteCard(receipe: any) {
+    this.recipeService.deleteReceipe(receipe)
+    this.allReceipes = this.recipeService.getAllReceipes()
   }
 
 }

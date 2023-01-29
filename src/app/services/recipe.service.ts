@@ -24,4 +24,9 @@ export class RecipeService {
       return []
     }
   }
+
+  deleteReceipe(deleteReceipe: any) {
+    this.recipes = this.recipes.filter(receipe => receipe.recipename !== deleteReceipe.recipename)
+    localStorage.setItem('newrecipe', JSON.stringify(this.recipes));
+  }
 }

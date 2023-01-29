@@ -20,6 +20,9 @@
 <div class="row">
   <div class="card col-lg-3" *ngFor="let receipe of allReceipes">
     <div class="card-img">
+      <div class="card-delete">
+        <i class="bi bi-trash-fill" (click)="deleteCard(receipe)"></i>
+      </div>
     </div>
     <div class="card-info">
       <p class="text-title">Product title: {{receipe.recipename}} </p>
