@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   // userName! : any[]
 
-  signupform! : FormGroup
+  signupform!: FormGroup
 
   signupUsers: any[] = [];
   signupObj: any = {
@@ -30,18 +30,18 @@ export class LoginComponent implements OnInit {
   // submitted: boolean | undefined;
   // email: string | undefined;
   // password: string | undefined;
-  
 
-  constructor( private Router: Router, private formbuilder : FormBuilder) { }
 
-  ngOnInit(): void { 
-    this.signupform = this.formbuilder.group ({
-      userName: ['',[Validators.required]],
+  constructor(private Router: Router, private formbuilder: FormBuilder) { }
+
+  ngOnInit(): void {
+    this.signupform = this.formbuilder.group({
+      userName: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]]
     })
     const localData = localStorage.getItem('signUpUsers');
-    if(localData != null) {
+    if (localData != null) {
       this.signupUsers = JSON.parse(localData);
     }
 
@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit {
     // }]
 
     this.signupUsers.push(this.signupObj);
-    localStorage.setItem('signUpUsers',JSON.stringify(this.signupUsers));
+    localStorage.setItem('signUpUsers', JSON.stringify(this.signupUsers));
     this.signupObj = {
       userName: '',
       email: '',
@@ -81,8 +81,9 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     const isUserExist = this.signupUsers.find(m => m.userName == this.loginObj.userName && m.password == this.loginObj.password);
-    if(isUserExist != undefined) {
+    if (isUserExist != undefined) {
       alert('Login Successfull');
+      localStorage.setItem('current-user', JSON.stringify(isUserExist))
       this.Router.navigate(['./homescreen'])
     } else {
       alert('Use valid id');
@@ -92,7 +93,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-  
+
 
   // get f() { return this.loginform.controls; }
 
@@ -109,7 +110,7 @@ export class LoginComponent implements OnInit {
   //       queryParams:{data:JSON.stringify(data)}
   //     });
   //   }
-    
+
   // }
 
 }

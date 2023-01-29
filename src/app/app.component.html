@@ -84,7 +84,16 @@
         </button>
       </div>
       <div class="modal-body">
-        <!-- <p>Modal body text goes here.</p> -->
+        <div class="row" *ngFor="let favoriteReceipe of favoriteReceipes">
+          <div class="col-lg-2"></div>
+          <div class="col-lg-8">
+            <div>Receipe Name: {{favoriteReceipe.recipename}}</div>
+            <div>Price: {{favoriteReceipe.price}}</div>
+          </div>
+          <div class="col-lg-2">
+            <button class="btn btn-primary" (click)="goTocart(favoriteReceipe)">cart</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

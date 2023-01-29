@@ -10,6 +10,8 @@ export class RecipeService {
   favoriteReceipe$ = new BehaviorSubject<any[]>([])
   constructor() {
     this.getAllReceipes();
+    const favorite = this.getFavoriteReceipes()
+    this.favoriteReceipe$.next(favorite)
   }
 
   addNewReceipes(receipe: any) {
@@ -28,6 +30,7 @@ export class RecipeService {
   }
 
   getFavoriteReceipes() {
+    this.recipes = this.getAllReceipes();
     return this.recipes.filter(receipe => receipe.favoriteReceipe)
   }
 

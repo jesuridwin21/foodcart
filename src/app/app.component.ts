@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Cartservice } from './services/cart.service';
 import { RecipeService } from './services/recipe.service';
 
 @Component({
@@ -11,7 +12,10 @@ export class AppComponent {
   title = 'foodcart';
   // loggedIn!: true;
   favoriteReceipesCount = 0
-  constructor(private router: Router, private recipeService: RecipeService) { }
+  favoriteReceipes: any[] = [];
+
+
+  constructor(private router: Router, private recipeService: RecipeService, private cartservice: Cartservice) { }
 
 
   ngOnInit() {
@@ -32,6 +36,7 @@ export class AppComponent {
   // favourite popup
 
   tofavo() {
+    this.favoriteReceipes = this.recipeService.getFavoriteReceipes();
     const notNull = document.getElementById('favmodal');
     if (notNull != null) {
       notNull.style.display = 'block';
@@ -83,6 +88,10 @@ export class AppComponent {
 
   toadd() {
     this.router.navigate(['./addrecipe']);
+  }
+
+  goTocart(receipe: any) {
+    this.cartservice.addItemToCart(receipe);
   }
 }
 

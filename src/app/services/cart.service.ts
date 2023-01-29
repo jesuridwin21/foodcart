@@ -6,13 +6,8 @@ import { Product, cartproducts } from "../types/products";
 
 export class Cartservice {
 
-    // private cartupdates = new Subject<string>();
-    // public cartupdates$ = this.cartupdates.asObservable();
-    // public cartitems: cartproducts[] = [];
-    // public get count(): number {
-    //     return this.cartitems.reduce((c, t1) => t1.qty + c, 0);
-    // };
 
+    cardItemUpdated$ = new Subject();
     cartItems: any[] = []
 
     constructor() { }
@@ -21,6 +16,7 @@ export class Cartservice {
     addItemToCart(receipe: any) {
         this.cartItems.push(receipe)
         localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+        this.cardItemUpdated$.next(this.cartItems)
     }
 
     getAllCartItems() {

@@ -12,6 +12,9 @@ export class CardlistComponent implements OnInit {
 
   ngOnInit(): void {
     this.allCartItems = this.cartservice.getAllCartItems();
+    this.cartservice.cardItemUpdated$.subscribe(() => {
+      this.allCartItems = this.cartservice.getAllCartItems();
+    })
   }
 
   deleteCartItem(index: number) {
