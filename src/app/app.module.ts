@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AddrecipeComponent } from './addrecipe/addrecipe.component';
 import { CardlistComponent } from './cardlist/cardlist.component';
+import { CardSearchPipe } from './pipes/card-search.pipe';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { CardlistComponent } from './cardlist/cardlist.component';
     ProfileComponent,
     AddrecipeComponent,
     CardlistComponent,
+    CardSearchPipe,
   ],
   imports: [
     BrowserModule,

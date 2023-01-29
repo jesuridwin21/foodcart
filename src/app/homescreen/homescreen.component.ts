@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { homescreen } from '../addrecipe/modal/home.modal';
@@ -13,6 +14,7 @@ import { Product } from '../types/products';
 export class HomescreenComponent implements OnInit {
   data: any;
   allReceipes: any[] = [];
+  cardSearch = '';
 
   constructor(private route: ActivatedRoute, private router: Router, private recipeService: RecipeService) { }
 
