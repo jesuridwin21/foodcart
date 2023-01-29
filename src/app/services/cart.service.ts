@@ -33,4 +33,9 @@ export class Cartservice {
         this.cartItems.splice(index, 1);
         localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
     }
+
+    clearAll() {
+        this.cartItems = [];
+        this.cardItemUpdated$.next(this.cartItems)
+    }
 }

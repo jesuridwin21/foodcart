@@ -1,19 +1,21 @@
 <!-- <app-header></app-header> -->
 <div id="container">
-    <form action="profile" method="post" [formGroup]="profileform" (ngSubmit)="onSubmit()" >
-       <div style="flex-direction: row">
-           <label for="username">Name:</label>
-           <input type="text" id="name" name="username" placeholder="Username" formControlName="username" [ngClass]="{ 'is-invalid': profileform.get('username')?.errors }">
-       </div>
-       <label for="email" id="email">Email id:</label>
-       <input type="email" id="emailinput" name="email id" placeholder="Email" formControlName="email" [ngClass]="{ 'is-invalid': profileform.get('email')?.errors }" >
-       <br>
-       <label for="Dob" id="dob">Dob:</label>
-       <input type="date" id="Dob" name="dob" placeholder="DOB"  formControlName="dob" [ngClass]="{ 'is-invalid': profileform.get('dob')?.errors }">
-       <div id="lower">
-           <button class="btn btn-secondary" (click)="onReset()">cancel</button>
-           
-           <button class="btn btn-primary" (click)="onSubmit()">save</button>
-       </div>
-     </form>
+    <form action="profile" method="post" [formGroup]="profileform" (ngSubmit)="onSubmit()">
+        <div style="flex-direction: row">
+            <label for="username">Name:</label>
+            <input type="text" id="name" name="username" placeholder="Username" formControlName="username"
+                [ngClass]="{ 'is-invalid': profileform.get('username')?.errors }">
+        </div>
+        <label for="email" id="email">Email id:</label>
+        <input type="email" id="emailinput" name="email id" placeholder="Email" formControlName="email"
+            [ngClass]="{ 'is-invalid': profileform.get('email')?.errors }">
+        <br>
+        <label for="Dob" id="dob">Dob:</label>
+        <input type="date" id="Dob" name="dob" placeholder="DOB" formControlName="dob"
+            [ngClass]="{ 'is-invalid': profileform.get('dob')?.errors }">
+        <div id="lower">
+            <button class="btn btn-secondary" (click)="onReset()">cancel</button>
+            <button class="btn btn-primary" type="submit">save</button>
+        </div>
+    </form>
 </div>

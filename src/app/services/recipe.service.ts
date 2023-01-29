@@ -52,4 +52,9 @@ export class RecipeService {
     const favorite = this.getFavoriteReceipes()
     this.favoriteReceipe$.next(favorite)
   }
+
+  clearAll() {
+    this.recipes = []
+    this.favoriteReceipe$.next([])
+  }
 }

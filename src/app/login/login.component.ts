@@ -84,7 +84,7 @@ export class LoginComponent implements OnInit {
     if (isUserExist != undefined) {
       alert('Login Successfull');
       localStorage.setItem('current-user', JSON.stringify(isUserExist))
-      this.Router.navigate(['./homescreen'])
+      this.Router.navigate(['./app/homescreen'])
     } else {
       alert('Use valid id');
     }

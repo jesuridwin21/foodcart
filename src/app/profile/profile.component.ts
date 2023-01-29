@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Authservice } from '../services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,12 +10,25 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
 
-  profileform! : FormGroup;
+  profileform: FormGroup = this.formBuilder.group({
+    username: [''],
+    email: [''],
+    dob: ['']
+  })
   submitted = false;
-
-  constructor( private router: Router) { }
+  userProfile: any = {};
+  constructor(private router: Router, private formBuilder: FormBuilder, private authservice: Authservice) { }
 
   ngOnInit(): void {
+    this.authservice.userProfile$.subscribe(userProfile => {
+      this.userProfile = userProfile;
+      this.profileform.setValue({
+        username: this.userProfile.userName,
+        email: this.userProfile.email,
+        dob: this.userProfile.dob || ''
+      })
+    })
+
   }
 
   onReset() {
@@ -23,14 +37,11 @@ export class ProfileComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-
-    if(this.profileform.invalid) {
+    if (this.profileform.invalid) {
       return;
     } else {
-      let data: any = this.profileform.value;
-      this.router.navigate(['./header'],{
-        queryParams:{data:JSON.stringify(data)}
-      })
+      let updatedUserProfile: any = this.profileform.value;
+      this.authservice.updateUserProfile(updatedUserProfile);
     }
 
   }

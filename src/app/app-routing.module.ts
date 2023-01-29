@@ -5,18 +5,24 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CardlistComponent } from './cardlist/cardlist.component';
 import { AddrecipeComponent } from './addrecipe/addrecipe.component';
+import { ShellComponent } from './shell/shell.component';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/login', pathMatch: 'full'},
-  {path: 'login', component: LoginComponent },
-  {path: 'homescreen', component: HomescreenComponent},
-  {path: 'profile', component: ProfileComponent},
-  {path: 'cardlist', component: CardlistComponent},
-  {path: 'addrecipe', component: AddrecipeComponent},
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  {
+    path: 'app', component: ShellComponent, children: [
+      { path: 'homescreen', component: HomescreenComponent },
+      { path: 'profile', component: ProfileComponent },
+      { path: 'cardlist', component: CardlistComponent },
+      { path: 'addrecipe', component: AddrecipeComponent },
+    ]
+  }
 
 
-  
+
+
 ];
 
 @NgModule({
