@@ -6,10 +6,12 @@
 .card-footer {
     width: 100%;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    font-size: 12px;
     /* margin-top: 35px; */
-    padding-top: 10px;
+    /* padding-top: 10px; */
     border-top: 1px solid #ddd;
 }
 
@@ -25,10 +27,16 @@
 .card-button {
     /* border: 1px solid #252525; */
     display: flex;
-    padding: .3em;
+    font-size: 13px;
+    /* padding: .3em; */
     cursor: pointer;
     border-radius: 50px;
     transition: .3s ease-in-out;
+}
+
+.btn-primary{
+    font-size: 12px;
+    margin-left: -10px;
 }
 
 .search-container {

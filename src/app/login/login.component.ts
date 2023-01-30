@@ -10,7 +10,11 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   // userName! : any[]
 
-  signupform!: FormGroup
+  signupform: FormGroup = this.formbuilder.group({
+    userName: ['', Validators.required],
+    email: ['', Validators.required],
+    password: ['', Validators.required]
+  })
 
   signupUsers: any[] = [];
   signupObj: any = {
@@ -45,32 +49,16 @@ export class LoginComponent implements OnInit {
       this.signupUsers = JSON.parse(localData);
     }
 
-    //  Remember me function
-
     this.rememberMe = false;
-    // this.autologin();
-
   }
 
 
 
-  // results: object = new Object();
+
 
   onSignup() {
-
-    // this.results = [{
-    //   {
-    //     "userName" : this.signupform.controls['userName'].value
-    //   },
-    //   {
-    //     "email" : this.signupform.controls['email'].value
-    //   },
-    //   {
-    //     "password" : this.signupform.controls['password'].value
-    //   }
-    // }]
-
-    this.signupUsers.push(this.signupObj);
+    const formValue = this.signupform.value;
+    this.signupUsers.push(formValue);
     localStorage.setItem('signUpUsers', JSON.stringify(this.signupUsers));
     this.signupObj = {
       userName: '',

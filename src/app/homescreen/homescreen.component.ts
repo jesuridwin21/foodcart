@@ -63,5 +63,9 @@ export class HomescreenComponent implements OnInit {
     if (this.priceOrder === 'highToLow') {
 
     }
+    const notNull = document.getElementById('filtermodal');
+    if (notNull != null) {
+      notNull.style.display = 'none';
+    }
   }
 }
