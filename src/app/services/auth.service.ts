@@ -27,18 +27,20 @@ export class Authservice {
         const currentUser = JSON.parse(currentUserString);
         let signUpUsers: any[] = JSON.parse(signUpUsersString);
 
-        currentUser.userName = updatedUserProfile.username;
-        currentUser.dob = updatedUserProfile.dob;
+
 
         signUpUsers = signUpUsers.map(user => {
-            if (user.email === updatedUserProfile.email) {
+            if (user.userName === currentUser.userName) {
+                user.email = updatedUserProfile.email
                 user.userName = updatedUserProfile.username;
-                user.dob = updatedUserProfile.dob;
                 return user;
             } else {
                 return user;
             }
         })
+        currentUser.userName = updatedUserProfile.username;
+        currentUser.email = updatedUserProfile.email;
+        currentUser.dob = updatedUserProfile.dob;
 
         localStorage.setItem('current-user', JSON.stringify(currentUser))
         localStorage.setItem('signUpUsers', JSON.stringify(signUpUsers))
@@ -46,6 +48,12 @@ export class Authservice {
         this.userProfile$.next(this.currentUser)
 
     }
+
+    clearAll() {
+        this.currentUser = []
+        this.userProfile$.next([])
+    }
+
 }
 
 

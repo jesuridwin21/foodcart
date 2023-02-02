@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-login',
@@ -36,9 +37,17 @@ export class LoginComponent implements OnInit {
   // password: string | undefined;
 
 
-  constructor(private Router: Router, private formbuilder: FormBuilder) { }
+  constructor(private Router: Router, private formbuilder: FormBuilder,
+    private toast: NgToastService
+  ) { }
 
   ngOnInit(): void {
+    const userNameCache = localStorage.getItem('username-cache');
+    const passwordCache = localStorage.getItem('password-cache');
+    this.loginObj.userName = userNameCache || '';
+    this.loginObj.password = passwordCache || '';
+
+
     this.signupform = this.formbuilder.group({
       userName: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
@@ -52,6 +61,10 @@ export class LoginComponent implements OnInit {
     this.rememberMe = false;
   }
 
+  ngOnDestroy() {
+    this.signupUsers = [];
+  }
+
 
 
 
@@ -59,6 +72,7 @@ export class LoginComponent implements OnInit {
   onSignup() {
     const formValue = this.signupform.value;
     this.signupUsers.push(formValue);
+    this.toast.success({ detail: "Success", summary: "User Registered", duration: 3000 })
     localStorage.setItem('signUpUsers', JSON.stringify(this.signupUsers));
     this.signupObj = {
       userName: '',
@@ -70,17 +84,28 @@ export class LoginComponent implements OnInit {
   onLogin() {
     const isUserExist = this.signupUsers.find(m => m.userName == this.loginObj.userName && m.password == this.loginObj.password);
     if (isUserExist != undefined) {
-      alert('Login Successfull');
+      // alert('Login Successfull');
+      this.toast.success({ detail: "Success Message", summary: "Login Successfull", duration: 5000 })
       localStorage.setItem('current-user', JSON.stringify(isUserExist))
+
+      if (this.rememberMe) {
+        localStorage.setItem('username-cache', this.loginObj.userName);
+        localStorage.setItem('password-cache', this.loginObj.password);
+      } else {
+        localStorage.removeItem('username-cache');
+        localStorage.removeItem('password-cache');
+      }
+
       this.Router.navigate(['./app/homescreen'])
     } else {
-      alert('Use valid id');
+      this.toast.error({ detail: "Error Message", summary: "Login Failed", duration: 5000 })
+      // alert('Use valid id');
     }
 
-
-
   }
-
+  rememberMeChange(event: any) {
+    this.rememberMe = event.target.checked
+  }
 
 
   // get f() { return this.loginform.controls; }

@@ -32,6 +32,7 @@ export class ShellComponent implements OnInit {
       }
     })
 
+    this.authservice.getCurrentUser();
     this.authservice.userProfile$.subscribe(userProfile => {
       this.userProfile = userProfile;
     })
@@ -74,6 +75,9 @@ export class ShellComponent implements OnInit {
     localStorage.removeItem('cartItems');
     localStorage.removeItem('newrecipe');
     localStorage.removeItem('current-user');
+    localStorage.removeItem('profile');
+    // localStorage.clear();
+    this.authservice.clearAll();
     this.cartservice.clearAll();
     this.recipeService.clearAll();
     this.router.navigate(['./login']);

@@ -17,6 +17,7 @@
     width: 100%;
     padding: 4px;
     cursor: pointer;
+    top: 0;
 }
 
 .card-img {

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, SelectControlValueAccessor } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Authservice } from '../services/auth.service';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-profile',
@@ -17,7 +18,9 @@ export class ProfileComponent implements OnInit {
   })
   submitted = false;
   userProfile: any = {};
-  constructor(private router: Router, private formBuilder: FormBuilder, private authservice: Authservice) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, private authservice: Authservice,
+    private toast: NgToastService
+    ) { }
 
   ngOnInit(): void {
     this.authservice.userProfile$.subscribe(userProfile => {
@@ -37,6 +40,7 @@ export class ProfileComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    this.toast.success({detail: "Success", summary: "Profile Updated Successfully", duration: 3000})
     if (this.profileform.invalid) {
       return;
     } else {

@@ -20,6 +20,7 @@
 <div class="row">
   <div class="card col-lg-3" *ngFor="let receipe of allReceipes|cardSearch:cardSearch|sortReceipe:priceOrder">
     <div class="card-img">
+      <img width="100%" height="100%" [src]="receipe.url" alt="">
       <div class="card-delete">
         <i class="bi bi-trash-fill" (click)="deleteCard(receipe)"></i>
       </div>
@@ -71,6 +72,28 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" (click)="sortReceipes()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- delete popup -->
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure to delete this item
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>

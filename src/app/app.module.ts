@@ -14,6 +14,7 @@ import { CardSearchPipe } from './pipes/card-search.pipe';
 import { TotalAmountPipe } from './pipes/total-amount.pipe';
 import { ShellComponent } from './shell/shell.component';
 import { SortReceipePipe } from './pipes/sort-receipe.pipe';
+import { NgToastModule } from 'ng-angular-popup';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { SortReceipePipe } from './pipes/sort-receipe.pipe';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    NgToastModule,
     // AngularFontAwesomeModule,
     
 

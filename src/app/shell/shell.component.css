@@ -1,6 +1,6 @@
 header {
     padding: 12px 0;
-    background: whitesmoke;
+    background: white;
 }
 
 .menu {
@@ -46,7 +46,8 @@ header {
 
 .sidebar-box {
     height: 650px;
-    background-color: whitesmoke;
+    width: 215px;
+    background-color: whites;
     /* width: 65px; */
 }
 

@@ -94,9 +94,9 @@
                     Password</span>
 
                 <div class="form-group form-check" id="reme">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" id="examplecheck2" for="exampleCheck1"
-                        [(ngModel)]="rememberMe">Remember me</label>
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1"
+                        (change)="rememberMeChange($event)">
+                    <label class="form-check-label" id="examplecheck2" for="exampleCheck1">Remember me</label>
                 </div>
 
                 <button id="btn" class="btn btn-primary" [disabled]="loginform.invalid"

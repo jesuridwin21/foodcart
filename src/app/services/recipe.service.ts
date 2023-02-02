@@ -37,6 +37,8 @@ export class RecipeService {
   deleteReceipe(deleteReceipe: any) {
     this.recipes = this.recipes.filter(receipe => receipe.recipename !== deleteReceipe.recipename)
     localStorage.setItem('newrecipe', JSON.stringify(this.recipes));
+    const favorite = this.getFavoriteReceipes()
+    this.favoriteReceipe$.next(favorite)
   }
 
   addToFavorite(favoriteReceipe: any) {

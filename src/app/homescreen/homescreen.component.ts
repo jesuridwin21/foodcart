@@ -8,6 +8,8 @@ import { homescreen } from '../addrecipe/modal/home.modal';
 import { Cartservice } from '../services/cart.service';
 import { RecipeService } from '../services/recipe.service';
 import { Product } from '../types/products';
+import { NgToastService } from 'ng-angular-popup';
+// import { NgToastModule } from 'ng-angular-popup/public-api';
 // import { cartservice } from '../services/cart.service';
 @Component({
   selector: 'app-homescreen',
@@ -20,8 +22,9 @@ export class HomescreenComponent implements OnInit {
   cardSearch = '';
   priceOrder = 'lowToHigh'
 
-  @ViewChild('toast', { static: true }) toast: any;
-  constructor(private route: ActivatedRoute, private router: Router, private recipeService: RecipeService, private cartservice: Cartservice) { }
+  // @ViewChild('toast', { static: true }) toast: any;
+  constructor(private route: ActivatedRoute, private router: Router, private recipeService: RecipeService, private cartservice: Cartservice,
+    private toast: NgToastService) { }
 
   ngOnInit(): void {
     let id = this.route.snapshot.paramMap.get('id');
@@ -32,6 +35,8 @@ export class HomescreenComponent implements OnInit {
 
   goTocart(receipe: any) {
     this.cartservice.addItemToCart(receipe);
+    this.toast.success({ detail: "Success", summary: "Recipe added to cart", duration: 3000 })
+
     // const toast = new bootstrap.Toast(this.toast.nativeElement)
     // toast.show()
   }
@@ -45,6 +50,7 @@ export class HomescreenComponent implements OnInit {
   deleteCard(receipe: any) {
     this.recipeService.deleteReceipe(receipe)
     this.allReceipes = this.recipeService.getAllReceipes()
+    this.toast.success({ detail: "Success", summary: "Deleted Successfully", duration: 3000 })
   }
 
   addToFavorite(receipe: any) {
@@ -68,4 +74,12 @@ export class HomescreenComponent implements OnInit {
       notNull.style.display = 'none';
     }
   }
+
+  // delete popup
+  // delitems() {
+  //   const notNull = document.getElementById('deleteModal');
+  //   if (notNull != null) {
+  //     notNull.style.display = 'block';
+  //   }
+  // }
 }
