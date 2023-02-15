@@ -1,28 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomescreenComponent } from './homescreen/homescreen.component';
-import { LoginComponent } from './login/login.component';
-import { ProfileComponent } from './profile/profile.component';
-import { CardlistComponent } from './cardlist/cardlist.component';
-import { AddrecipeComponent } from './addrecipe/addrecipe.component';
+
 import { ShellComponent } from './shell/shell.component';
+import { AuthGuard } from './guards/auth.guard';
+import { LoggedinUserGuard } from './guards/loggedin-user.guard';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', canActivate: [LoggedinUserGuard], loadChildren: () => import('./login/login.module').then(result => result.LoginModule) },
   {
     path: 'app', component: ShellComponent, children: [
-      { path: 'homescreen', component: HomescreenComponent },
-      { path: 'profile', component: ProfileComponent },
-      { path: 'cardlist', component: CardlistComponent },
-      { path: 'addrecipe', component: AddrecipeComponent },
+      { path: 'homescreen', canActivate: [AuthGuard], loadChildren: () => import('./homescreen/home.module').then(result => result.HomeModule) },
+      { path: 'profile', canActivate: [AuthGuard], loadChildren: () => import('./profile/profile.module').then(result => result.ProfileModule) },
+      { path: 'cardlist', canActivate: [AuthGuard], loadChildren: () => import('./cardlist/cardlist.module').then(result => result.CardListModule) },
+      { path: 'addrecipe', canActivate: [AuthGuard], loadChildren: () => import('./addrecipe/addreceipe.module').then(result => result.AddReceipeModule) },
     ]
   }
-
-
-
-
 ];
 
 @NgModule({

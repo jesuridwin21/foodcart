@@ -17,10 +17,14 @@ export class ShellComponent implements OnInit {
   favoriteReceipesCount = 0
   favoriteReceipes: any[] = [];
   userProfile: any = {};
+  profileImage = '../../assets/logo.png'
 
 
-  constructor(private router: Router, private recipeService: RecipeService,
-    private cartservice: Cartservice, private authservice: Authservice) { }
+  constructor(
+    private router: Router,
+    private recipeService: RecipeService,
+    private cartservice: Cartservice,
+    private authservice: Authservice) { }
 
 
   ngOnInit() {
@@ -33,8 +37,9 @@ export class ShellComponent implements OnInit {
     })
 
     this.authservice.getCurrentUser();
-    this.authservice.userProfile$.subscribe(userProfile => {
+    this.authservice.userProfile$.subscribe((userProfile: any) => {
       this.userProfile = userProfile;
+      this.profileImage = userProfile.profileImage || this.profileImage;
     })
   }
 

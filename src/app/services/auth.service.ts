@@ -33,6 +33,7 @@ export class Authservice {
             if (user.userName === currentUser.userName) {
                 user.email = updatedUserProfile.email
                 user.userName = updatedUserProfile.username;
+                user.profileImage = updatedUserProfile.profileImage;
                 return user;
             } else {
                 return user;
@@ -41,6 +42,7 @@ export class Authservice {
         currentUser.userName = updatedUserProfile.username;
         currentUser.email = updatedUserProfile.email;
         currentUser.dob = updatedUserProfile.dob;
+        currentUser.profileImage = updatedUserProfile.profileImage;
 
         localStorage.setItem('current-user', JSON.stringify(currentUser))
         localStorage.setItem('signUpUsers', JSON.stringify(signUpUsers))

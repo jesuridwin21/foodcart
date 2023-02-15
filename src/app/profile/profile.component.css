@@ -27,14 +27,14 @@
     }
 
     .btn-primary {
-        margin-left: 20px;
+        margin-left: 80px;
     }
 
 
 #container {
     position: fixed;
-    width: 340px;
-    height: 280px;
+    width: 440px;
+    height: 380px;
     top: 50%;
     left: 50%;
     margin-top: -140px;
@@ -74,4 +74,8 @@
 
     color: #555;
 
+    }
+
+    .image-selection {
+        margin-left: 160px;
     }

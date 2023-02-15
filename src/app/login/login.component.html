@@ -43,7 +43,7 @@
                 <!-- username -->
                 <div>
                     <input type="text" name="txt" placeholder="User name" formControlName="userName"
-                        [ngClass]="{'is-invalid': signupform.get('userName')?.errors}">
+                        [ngClass]="{'is-invalid': signupform.get('userName')?.errors && signupform.get('userName')?.touched}">
                     <!-- <span class="text-danger" *ngIf="signupform.controls['userName'].dirty && signupform.hasError('required', 'userName')">*username is required</span> -->
                     <div class="invalid-feedback" *ngIf="signupform.get('userName')?.invalid">username is
                         required<sup>*</sup></div>
@@ -51,7 +51,7 @@
                 <!-- email   -->
                 <div>
                     <input type="email" name="email" placeholder="Email" formControlName="email"
-                        [ngClass]="{'is-invalid': signupform.get('email')?.errors}">
+                        [ngClass]="{'is-invalid': signupform.get('email')?.errors && signupform.get('email')?.touched}">
                     <div class="invalid-feedback" *ngIf="signupform.get('email')?.errors?.['required']">Email is
                         required<sup>*</sup></div>
                     <div class="invalid-feedback" *ngIf="signupform.get('email')?.errors?.['email']">Email is
@@ -60,7 +60,7 @@
                 <!-- password -->
                 <div>
                     <input type="password" name="pswd" placeholder="Password" formControlName="password"
-                        [ngClass]="{'is-invalid':signupform.get('password')?.errors}">
+                        [ngClass]="{'is-invalid':signupform.get('password')?.errors && signupform.get('password')?.touched}">
                     <div class="invalid-feedback" *ngIf="signupform.get('password')?.errors"></div>
                     <div class="invalid-feedback" *ngIf="signupform.get('password')?.errors?.['required']">Password is
                         required<sup>*</sup></div>
@@ -94,8 +94,8 @@
                     Password</span>
 
                 <div class="form-group form-check" id="reme">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1"
-                        (change)="rememberMeChange($event)">
+                    <input type="checkbox" class="form-check-input" name="rember" [(ngModel)]="rememberMe"
+                        id="exampleCheck1" (change)="rememberMeChange($event)">
                     <label class="form-check-label" id="examplecheck2" for="exampleCheck1">Remember me</label>
                 </div>
 

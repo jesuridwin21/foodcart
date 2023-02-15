@@ -18,27 +18,35 @@
 <!-- cart lists -->
 
 <div class="row">
-  <div class="card col-lg-3" *ngFor="let receipe of allReceipes|cardSearch:cardSearch|sortReceipe:priceOrder">
-    <div class="card-img">
-      <img width="100%" height="100%" [src]="receipe.url" alt="">
-      <div class="card-delete">
-        <i class="bi bi-trash-fill" (click)="deleteCard(receipe)"></i>
+  <ng-container *ngIf="allReceipes  && allReceipes.length > 0">
+    <div class="card col-lg-3" *ngFor="let receipe of allReceipes|cardSearch:cardSearch|sortReceipe:priceOrder">
+      <div class="card-img">
+        <img width="100%" height="100%" [src]="receipe.url" alt="">
+        <div class="card-delete">
+          <i class="bi bi-trash-fill" (click)="deleteCard(receipe)"></i>
+        </div>
+      </div>
+      <div class="card-info">
+        <p class="text-title">Product title: {{receipe.recipename}} </p>
+        <span class="text-title">Price: {{receipe.price}} </span>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-primary card-btn" (click)="goTocart(receipe)">Add to cart</button>
+        <span>
+          <button class="btn btn-secondary" [ngClass]="{'favorite-receipe':receipe.favoriteReceipe}"
+            (click)="addToFavorite(receipe)">
+            <i class="bi bi-heart-fill"></i>
+          </button>
+        </span>
       </div>
     </div>
-    <div class="card-info">
-      <p class="text-title">Product title: {{receipe.recipename}} </p>
-      <span class="text-title">Price: {{receipe.price}} </span>
-    </div>
-    <div class="card-footer">
-      <button class="btn btn-primary" (click)="goTocart(receipe)">Add to cart</button>
-      <span>
-        <button class="btn btn-secondary" [ngClass]="{'favorite-receipe':receipe.favoriteReceipe}"
-          (click)="addToFavorite(receipe)">
-          <i class="bi bi-heart-fill"></i>
-        </button>
-      </span>
-    </div>
-  </div>
+
+  </ng-container>
+  <ng-container *ngIf="!allReceipes || allReceipes.length == 0">
+
+<app-emptystate></app-emptystate>
+  </ng-container>
+  
 </div>
 
 <div class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true" #toast>
@@ -79,12 +87,12 @@
 
 <!-- delete popup -->
 
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+<div class="modal" id="deleteModal" tabindex="-1" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" (click)="closeDel()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -92,8 +100,8 @@
         Are you sure to delete this item
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+        <button type="button" class="btn btn-primary" (click)="deleteConfirmed()">Delete</button>
       </div>
     </div>
   </div>

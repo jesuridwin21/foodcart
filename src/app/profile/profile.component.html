@@ -1,6 +1,11 @@
 <!-- <app-header></app-header> -->
 <div id="container">
     <form action="profile" method="post" [formGroup]="profileform" (ngSubmit)="onSubmit()">
+        <div class="image-selection">
+            <label for="img" [hidden]="true"> Recipe Iamge:</label>
+            <input #fileInput type="file" [hidden]="true" id="img"  (change)="onFileSelected($event)">
+            <img width="100px" height="100px" [src]="url" id="defaultimg" (click)="uploadImage()">
+        </div>
         <div style="flex-direction: row">
             <label for="username">Name:</label>
             <input type="text" id="name" name="username" placeholder="Username" formControlName="username"
@@ -14,7 +19,7 @@
         <input type="date" id="Dob" name="dob" placeholder="DOB" formControlName="dob"
             [ngClass]="{ 'is-invalid': profileform.get('dob')?.errors }">
         <div id="lower">
-            <button class="btn btn-secondary" (click)="onReset()">cancel</button>
+            <!-- <button class="btn btn-secondary" (click)="onReset()">cancel</button> -->
             <button class="btn btn-primary" type="submit">save</button>
         </div>
     </form>

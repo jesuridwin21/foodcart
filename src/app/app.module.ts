@@ -4,43 +4,27 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { HomescreenComponent } from './homescreen/homescreen.component';
 import { HeaderComponent } from './header/header.component';
-import { ProfileComponent } from './profile/profile.component';
-import { AddrecipeComponent } from './addrecipe/addrecipe.component';
-import { CardlistComponent } from './cardlist/cardlist.component';
-import { CardSearchPipe } from './pipes/card-search.pipe';
-import { TotalAmountPipe } from './pipes/total-amount.pipe';
 import { ShellComponent } from './shell/shell.component';
-import { SortReceipePipe } from './pipes/sort-receipe.pipe';
 import { NgToastModule } from 'ng-angular-popup';
+import { SharedModule } from './shared/shared.module';
+import { HttpErrorResponse, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { customHttpInterceptor } from './services/interceptor/interceptor.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    HomescreenComponent,
     HeaderComponent,
-    ProfileComponent,
-    AddrecipeComponent,
-    CardlistComponent,
-    CardSearchPipe,
-    TotalAmountPipe,
     ShellComponent,
-    SortReceipePipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    NgToastModule,
-    // AngularFontAwesomeModule,
-    
-
+    NgToastModule, SharedModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass:customHttpInterceptor,multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

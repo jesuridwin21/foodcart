@@ -34,7 +34,7 @@
     transition: .3s ease-in-out;
 }
 
-.btn-primary{
+.card-btn {
     font-size: 12px;
     margin-left: -10px;
 }
@@ -58,6 +58,8 @@
 .price-switch {
     text-align: left;
 }
+
+
 
 /*Hover*/
 /* .card-img:hover { */

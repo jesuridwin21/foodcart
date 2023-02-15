@@ -37,7 +37,9 @@ export class LoginComponent implements OnInit {
   // password: string | undefined;
 
 
-  constructor(private Router: Router, private formbuilder: FormBuilder,
+  constructor(
+    private Router: Router,
+    private formbuilder: FormBuilder,
     private toast: NgToastService
   ) { }
 
@@ -46,6 +48,11 @@ export class LoginComponent implements OnInit {
     const passwordCache = localStorage.getItem('password-cache');
     this.loginObj.userName = userNameCache || '';
     this.loginObj.password = passwordCache || '';
+    if (userNameCache && passwordCache) {
+      this.rememberMe = true
+    } else {
+      this.rememberMe = false
+    }
 
 
     this.signupform = this.formbuilder.group({
@@ -58,7 +65,7 @@ export class LoginComponent implements OnInit {
       this.signupUsers = JSON.parse(localData);
     }
 
-    this.rememberMe = false;
+    // this.rememberMe = false;
   }
 
   ngOnDestroy() {

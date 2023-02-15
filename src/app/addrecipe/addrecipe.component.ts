@@ -15,15 +15,16 @@ export class AddrecipeComponent implements OnInit {
 
   @ViewChild('fileInput', { static: true }) fileInput: any;
   addrecipe = this.formBuilder.group({
-    recipename: ['',Validators.required],
-    price: ['',Validators.required]
+    recipename: ['', Validators.required],
+    price: ['', Validators.required]
   });
   submitted = false;
   url = "./assets/imageicon.jpg";
+recipename: any;
 
   constructor(private router: Router, private formBuilder: FormBuilder, private recipeService: RecipeService,
     private toast: NgToastService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
 
@@ -43,7 +44,12 @@ export class AddrecipeComponent implements OnInit {
     }
     this.addrecipe.setValue({ price: '', recipename: '' })
     this.url = "./assets/imageicon.jpg";
-    this.toast.success({detail: "Success", summary: "New Recipe Added", duration: 3000 })
+    this.toast.success(
+      {
+        detail: "Success",
+        summary: "New Recipe Added",
+        duration: 3000
+      })
   }
 
   uploadImage() {
