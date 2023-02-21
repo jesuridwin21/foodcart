@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ComponentStore } from "@n"
+// import { ComponentStore } from ""
 import { contact } from "src/app/models/contacts.model";
 
 export interface contactState{
@@ -7,6 +7,6 @@ export interface contactState{
 }
 
 @Injectable() 
-export class Contactstore extends  {
+export class Contactstore   {
 
 }

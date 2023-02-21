@@ -10,6 +10,7 @@ import { NgToastModule } from 'ng-angular-popup';
 import { SharedModule } from './shared/shared.module';
 import { HttpErrorResponse, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { customHttpInterceptor } from './services/interceptor/interceptor.service';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { customHttpInterceptor } from './services/interceptor/interceptor.servic
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    NgToastModule, SharedModule
+    NgToastModule, SharedModule, StoreModule.forRoot({}, {})
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass:customHttpInterceptor,multi: true }],
   bootstrap: [AppComponent]
