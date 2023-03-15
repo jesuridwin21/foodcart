@@ -40,3 +40,17 @@
     line-height: 1.5;
     color: black;
 }
+
+/* DARK MODE */
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #f5f5f5;
+        color: #333
+    }
+    
+    body .dark-mode {
+        background-color: #333;
+        color: #f5f5f5;
+    }
+}

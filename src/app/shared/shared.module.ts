@@ -4,6 +4,7 @@ import { EmptystateComponent } from './emptystate/emptystate.component';
 import { CardSearchPipe } from '../pipes/card-search.pipe';
 import { TotalAmountPipe } from '../pipes/total-amount.pipe';
 import { SortReceipePipe } from '../pipes/sort-receipe.pipe';
+// import { GlobalErrorService } from './error/global-error.service';
 
 
 

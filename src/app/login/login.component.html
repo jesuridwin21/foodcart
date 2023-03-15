@@ -80,7 +80,7 @@
             <form #loginform="ngForm">
                 <label for="chk" aria-hidden="true">Login</label>
                 <div>
-                    <input type="email" required name="userName" #username="ngModel" placeholder="User Name"
+                    <input type="text" required name="userName" #username="ngModel" placeholder="User Name"
                         [(ngModel)]="loginObj.userName" ngModel>
                     <span class="usernme" *ngIf="username.invalid && username.touched" style="color: red;">Enter an
                         Username</span>

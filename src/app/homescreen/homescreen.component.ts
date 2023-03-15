@@ -35,6 +35,7 @@ export class HomescreenComponent implements OnInit {
   ngOnInit(): void {
     let id = this.route.snapshot.paramMap.get('id');
     this.allReceipes = this.recipeService.getAllReceipes()
+    // console.log(id.test.test)
   }
 
   goTocart(receipe: any) {

@@ -15,7 +15,8 @@ const routes: Routes = [
       { path: 'cardlist', canActivate: [AuthGuard], loadChildren: () => import('./cardlist/cardlist.module').then(result => result.CardListModule) },
       { path: 'addrecipe', canActivate: [AuthGuard], loadChildren: () => import('./addrecipe/addreceipe.module').then(result => result.AddReceipeModule) },
     ]
-  }
+  },
+  { path: 'googlemaps', loadChildren: () => import('./googlemaps/googlemaps/googlemaps.module').then(m => m.GooglemapsModule) }
 ];
 
 @NgModule({
