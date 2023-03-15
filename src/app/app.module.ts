@@ -14,7 +14,7 @@ import { customHttpInterceptor } from './services/interceptor/interceptor.servic
 import { GlobalErrorService } from './shared/error/global-error.service';
 import { reducer } from './reducers/tutorial.reducers';
 // import { GooglemapsComponent } from './googlemaps/googlemaps.component';
-import { AgmCoreModule } from '@agm/core';
+// import { AgmCoreModule } from '@agm/core';
 // import { GooglemapsComponent } from './googlemaps/googlemaps.component';
 // import { GooglemapsModule } from './googlemaps/googlemaps.module';
 
@@ -41,9 +41,9 @@ class MyErrorHandler implements ErrorHandler {
     FormsModule,
     NgToastModule,
     SharedModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAvcDy5ZYc2ujCS6TTtI3RYX5QmuoV8Ffw'
-    })
+    // AgmCoreModule.forRoot({
+    //   apiKey: 'AIzaSyAvcDy5ZYc2ujCS6TTtI3RYX5QmuoV8Ffw'
+    // })
     // StoreModule.forRoot({ 
     //   // tutorial: reducer
     //  }),
