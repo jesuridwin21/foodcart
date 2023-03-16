@@ -16,7 +16,7 @@ const routes: Routes = [
       { path: 'addrecipe', canActivate: [AuthGuard], loadChildren: () => import('./addrecipe/addreceipe.module').then(result => result.AddReceipeModule) },
     ]
   },
-  { path: 'googlemaps', loadChildren: () => import('./googlemaps/googlemaps/googlemaps.module').then(m => m.GooglemapsModule) }
+  // { path: 'googlemaps', loadChildren: () => import('./googlemaps/googlemaps/googlemaps.module').then(m => m.GooglemapsModule) }
 ];
 
 @NgModule({

@@ -19,6 +19,7 @@ export class ShellComponent implements OnInit {
   userProfile: any = {};
   profileImage = '../../assets/logo.png'
 
+  isDarkMode = false;
 
   constructor(
     private router: Router,
@@ -112,6 +113,11 @@ export class ShellComponent implements OnInit {
 
   goTocart(receipe: any) {
     this.cartservice.addItemToCart(receipe);
+  }
+
+  // DARKMODE
+  toggleDarkMode() {
+     this.isDarkMode = !this.isDarkMode;
   }
 
 }
