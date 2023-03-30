@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-login',
@@ -81,6 +82,8 @@ export class LoginComponent implements OnInit {
     this.signupUsers.push(formValue);
     this.toast.success({ detail: "Success", summary: "User Registered", duration: 3000 })
     localStorage.setItem('signUpUsers', JSON.stringify(this.signupUsers));
+    console.log(CryptoJS.AES.encrypt( this.signupform.value.email, "myemail").toString()); 
+       console.log(CryptoJS.AES.encrypt( this.signupform.value.password, "mypassword").toString());
     this.signupObj = {
       userName: '',
       email: '',
@@ -98,6 +101,8 @@ export class LoginComponent implements OnInit {
       if (this.rememberMe) {
         localStorage.setItem('username-cache', this.loginObj.userName);
         localStorage.setItem('password-cache', this.loginObj.password);
+      //   console.log(CryptoJS.AES.encrypt( this.signupform.value.email, "myemail").toString()); 
+      //  console.log(CryptoJS.AES.encrypt( this.signupform.value.password, "mypassword").toString());
       } else {
         localStorage.removeItem('username-cache');
         localStorage.removeItem('password-cache');
